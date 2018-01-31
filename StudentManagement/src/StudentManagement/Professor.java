@@ -2,16 +2,16 @@ package StudentManagement;
 
 import java.util.*;
 
-public class Student {
+public class Professor {
 	//변수
 	private String name;
 	private String number;
 	private int age;
-	//수강과목울 ArrayList
+	//강의과목울 ArrayList
 	private ArrayList<String> subject = new ArrayList<>();
 	
 	//생성자
-	public Student(String name, int age, String number) {
+	public Professor(String name, int age, String number) {
 //		super();
 		this.name = name;
 		this.number = number;
@@ -42,7 +42,7 @@ public class Student {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
+		
 	//메소드
 	
 	
