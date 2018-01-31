@@ -1,4 +1,4 @@
-package model;
+package asdf;
 
 import java.util.*;
 
@@ -8,8 +8,8 @@ public class LogIn {
 		if(log == 920914) {
 			System.out.println("관리자로 로그인 되었습니다.");
 			//어드민 메뉴 메소드 호출
-			Admin admin = new Admin();
-			admin.AdminMenu();
+//			Admin admin = new Admin();
+//			admin.AdminMenu();
 			//어드민 메뉴 선택
 			Scanner input = new Scanner(System.in);
 			int inputAdminMenu = input.nextInt();

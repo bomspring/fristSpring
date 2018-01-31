@@ -14,14 +14,17 @@ public class StudentManagement {
 	ArrayList<Student> stuarray = new ArrayList<Student>();
 	
 	public void main() {
-//		try {
+		try {
 		//반복문
 		while(true) {
 			//메뉴 목록 호출
 			menuPrint();
 			//선택문
 			String input = sc.next();
-			if (input.equals("1")) {
+			if (input.equals("0")){
+			   	System.out.println("프로그램을 종료합니다.");
+			   	break;
+			}if (input.equals("1")) {
 				addStu();
 			}if (input.equals("2")) {
 			   	findStu();
@@ -29,10 +32,9 @@ public class StudentManagement {
 			   	removeStu();
 			}if (input.equals("4")) {
 				modifyStu();
+			}if (input.equals("5")) {
+				addSubjToStu();
 			}
-//			if (input.equals("5")) {
-//				addSubjToStu();
-//			}
 //			if (input.equals("4")) {
 //			   	addPro();
 //			}
@@ -43,24 +45,19 @@ public class StudentManagement {
 //			}if (input.equals("8")) {
 //				modifyPro();
 //			}
-//			if (input.equals("7")) {
-//			    StuAllP();
-//			}if (input.equals("8")) {
+			if (input.equals("6")) {
+			    StuAllP();
+			}
+//			if (input.equals("8")) {
 //			    ProAllP();
 //			}
 			if (input.equals("9")){
 			   	Credit();
-			}if (input.equals("0")){
-			   	System.out.println("프로그램을 종료합니다.");
-			   	break;
 			}
-//			else {
-//			   	System.out.println("0 - 9 사이의 정수를 입력해 주세요.");
-//			}
 		}
-//	}catch(Exception e) {
-//		System.out.println("0 - 9 사이의 정수를 입력해 주세요.");
-//	}
+	}catch(Exception e) {
+		System.out.println("0 - 9 사이의 정수를 입력해 주세요.");
+	}
 	}
 	
 	public void menuPrint() {
@@ -72,12 +69,12 @@ public class StudentManagement {
 		System.out.println("2. 학생 찾기");
 		System.out.println("3. 학생 삭제");
 		System.out.println("4. 학생 정보 수정");
-//		System.out.println("5. 학생 과목 등록");
+		System.out.println("5. 학생 과목 등록");
 //		System.out.println("4. 교수 추가");		// 교수 클레스는 미리 등록 후 강의 과목까지 지정해놓기
 //		System.out.println("6. 교수 찾기");
 //		System.out.println("7. 교수 삭제");
 //		System.out.println("8. 교수 정보 수정");
-//		System.out.println("7. 모든 학생 정보 호출");
+		System.out.println("6. 모든 학생 정보 출력");
 //		System.out.println("8. 모든 교수 정보 호출");
 		System.out.println("9. 개발자");
 		System.out.println("0. 프로그램 종료");
@@ -86,7 +83,7 @@ public class StudentManagement {
 	}
 	//11111 학생 추가
 	public void addStu() {
-		 File StuFile = new File("C:\\Users\\201-01\\Desktop\\Java", "학생.txt");//파일을 불러올 주소 , 파일 명
+		 File StuFile = new File("C:\\Users\\BomSeol\\Desktop\\JAVA_Porject", "학생.txt");//파일을 불러올 주소 , 파일 명
 	
 		 //파일 읽기
 		 BufferedReader br = null;
@@ -126,25 +123,33 @@ public class StudentManagement {
 	}
 	//22222 학생 찾기
 	public void findStu() {
-		System.out.print(" 찾을 학생 이름을 입력하세요 : ");
+		System.out.println("찾을 학생 이름을 입력하세요 : ");
 		String name = sc.next();
-		  
-		for (int i = 0; i < stuarray.size(); i++) {
+		
+		try {
+			
+		for (int i = 0; i <= stuarray.size(); i++) {
 			  
 			if (stuarray.get(i).getName().equals(name)) {
-				System.out.print("찾으시는 학생 자료 : ");
+				System.out.println("찾으시는 학생 자료 : ");
 				System.out.println(stuarray.get(i).getName() + " 학생, " + stuarray.get(i).getAge() + " 살, 폰번호_" + stuarray.get(i).getNumber());
+				System.out.println("메뉴로 돌아갑니다.");
+				break;
 				}
 		}
-		//자료가 없을시 찾지못했습니다 출력 후 메뉴로 돌아가기
-		//i<=stuarray.size(); 로 준 뒤, 에러시 "찾을 학생이 없습니다." 출력 후 메뉴로 복귀.
+		}catch (Exception e) { //i <=stuarray.size(); 에러
+			System.out.println("찾으시는 학생 정보가 존재하지 않습니다.");
+			System.out.println("메뉴로 돌아갑니다.");
+		}
 	}
 	//33333 학생 삭제
 	public void removeStu() {
-		System.out.print("학생 이름을 입력하세요 : ");
+		System.out.println("학생 이름을 입력하세요 : ");
 		String name = sc.next();
 		
-		for (int i = 0; i < stuarray.size(); i++) {
+		try {
+		
+		for (int i = 0; i <= stuarray.size(); i++) {
 			 
 			if (stuarray.get(i).getName().equals(name)) {
 				System.out.println(stuarray.get(i).getName() + " 학생 자료가 삭제 되었습니다.");
@@ -152,35 +157,96 @@ public class StudentManagement {
 				break;
 			}
 		}
+		}catch (Exception e) {
+			System.out.println("삭제할 학생 정보가 존재하지 않습니다.");
+			System.out.println("메뉴로 돌아갑니다.");
+		}
 	}
 	//44444 학생 정보 수정
 	public void modifyStu() {
-		System.out.print("학생 이름을 입력하세요 : ");
+		System.out.println("정보를 수정할 학생 이름을 입력하세요 : ");
 		String name = sc.next();
-		for (int i = 0; i < stuarray.size(); i++) {
+		
+		try {
+		
+		for (int i = 0; i <= stuarray.size(); i++) {
+			
 			if (stuarray.get(i).getName().equals(name)) {
+				
+				System.out.println("수정할 학생의 정보는 : " + stuarray.get(i).getName() + " 학생, " + stuarray.get(i).getAge() + " 살, 폰번호_" + stuarray.get(i).getNumber() + "입니다.");
 				System.out.println(name + "학생의 정보를 수정합니다.");
-				//학생의 이름을 포함한 정보 변경 -- setter 이용.
-//				System.out.println("이름을 변경합니다.");
-//				 = sc.next();
-				System.out.println("나이는 변경합니다.");
+				
+				System.out.println("변경할 이름을 입력하세요.");
+				String modifyname = sc.next();
+				System.out.println("변경할 나이를 입력하세요.");
 				int age = sc.nextInt();
-				System.out.println("번호를 변경합니다.");
-				String num = sc.next();
+				System.out.println("변경할 번호를 입력하세요.");
+				String ph = sc.next();
+				//stuarray에 수정한 정보 삽입
+				stuarray.get(i).setName(modifyname);
 				stuarray.get(i).setAge(age);
-				stuarray.get(i).setNumber(num);
+				stuarray.get(i).setNumber(ph);
 				System.out.println(stuarray.get(i).getName() + " 학생의 나이와 번호가 변경되었습니다.");
+				System.out.println("메뉴로 돌아갑니다.");
+				break;
 			}
+		}
+		}catch (Exception e) {
+			System.out.println("정보를 수정할 학생이 존재하지 않습니다.");
+			System.out.println("메뉴로 돌아갑니다.");
 		}
 	}
 	//55555 학생 과목 등록
 	public void addSubjToStu() {
+		System.out.println("수강 과목을 등록할 학생 이름을 입력하세요.");
+		String name = sc.next();
 		
+			
+			for (int i = 0; i <= stuarray.size(); i++) {
+				  
+				if (stuarray.get(i).getName().equals(name)) {
+					System.out.println(name + "학생의 수강 과목은" + "입니다.");
+					System.out.println("추가 수강할 과목 번호를 입력해 주세요. (1.C   2.C++   3.JAVA   4.Python");
+					int num = sc.nextInt();
+					
+					switch(num) {
+					
+					case 1:{//C강의 추가
+						break;
+					}case 2:{//C++강의 추가
+						break;
+					}case 3:{//JAVA강의 추가
+						break;
+					}case 4:{//Python강의 추가
+						break;
+					}
+					}
+				}
+			}
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	//66666 모든 학생 정보 출력
+	public void StuAllP() {
+		  
+		for (int i = 0; i < stuarray.size(); i++) {
+			System.out.println("====================");
+			System.out.println(stuarray.get(i).getNumber() + "번 " + stuarray.get(i).getName() + "학생 " + stuarray.get(i).getAge() + "살");
+		}
+		  
 	}
 	//99999 개발자
 	public void Credit() {
 		System.out.println("--------------------");
-		System.out.println("   기획, 개발       =   신 봄");
+		System.out.println("   기획 및 개발       =   신 봄");
 		System.out.println("개발에 도움을 주신 분 = '긍정노선생'님");
 		System.out.println("     Powered by JAVA");
 		System.out.println("--------------------");

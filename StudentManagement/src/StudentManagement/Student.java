@@ -44,6 +44,8 @@ public class Student {
 	}
 	
 	//¸Þ¼Òµå
-	
+//	public ) {
+//		
+//	}
 	
 }
