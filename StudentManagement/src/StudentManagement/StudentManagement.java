@@ -357,6 +357,8 @@ public class StudentManagement {
 		}catch(IndexOutOfBoundsException e) {
 			System.out.println("1 - 3 사이의 정수를 입력해 주세요.");
 			Compare = true;
+		}catch(InputMismatchException e) {
+			System.out.println("1 - 3 사이의 정수를 입력해 주세요.");
 		}
 	}
 	//66666 학생 과목 정보 삭제
@@ -403,6 +405,8 @@ public class StudentManagement {
 				
 			}
 		}catch(IndexOutOfBoundsException e) {
+			System.out.println("숫자를 올바르게 입력해주세요. (1, 2)");
+		}catch(InputMismatchException e) {
 			System.out.println("숫자를 올바르게 입력해주세요. (1, 2)");
 		}
 		
