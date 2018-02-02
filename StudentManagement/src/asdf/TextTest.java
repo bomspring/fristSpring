@@ -13,8 +13,8 @@ public class TextTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		  File inFile = new File("C:\\Users\\Public", "in.txt");
-	        File outFile = new File("C:\\Users\\Public", "in.txt");
+		  File inFile = new File("C:\\\\Users\\\\BomSeol\\\\Desktop\\\\JAVA_Porject\", \"test.txt");
+	        File outFile = new File("C:\\\\Users\\\\BomSeol\\\\Desktop\\\\JAVA_Porject\", \"test.txt");
 	       
 	        //==========================//
 	        // 텍스트 파일 쓰기
